@@ -35,9 +35,37 @@ withdraw(amount){
 },
 accountError(){
     console.log("Error: Invalid operation");
+},
+exitAccount(){
+    console.log("Exiting account");
+    this.accountName = "";
+    this.balance = -1;
 }
 };
-account.getBalance();
-account.getAccountName();
-account.deposit(parseFloat(prompt("Enter amount to deposit:")));
-account.withdraw(parseFloat(prompt("Enter amount to withdraw:")));
+function atm(){
+    const message = parseFloat(
+        prompt(
+            "Select an option 1.) Get Balance 2.) Make Deposit 3.) Make Withdrawal 4.) Get account name 5.) Exit"
+        )
+    );
+    switch (message) {
+        case 1:
+            account.getBalance();
+            break;
+        case 2:
+            account.deposit(parseFloat(prompt("Enter amount to deposit:")));
+            break;
+        case 3:
+            account.withdraw(parseFloat(prompt("Enter amount to withdraw:")));
+            break;
+        case 4:
+            account.getAccountName();
+            break;
+        case 5:
+            account.exitAccount();
+            break;
+        default:
+            console.log("Invalid option");
+    }
+}
+atm();
